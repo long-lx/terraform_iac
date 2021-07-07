@@ -14,8 +14,8 @@ resource "google_sql_database_instance" "pg-01" {
   }
 }
 
-# resource "google_sql_user" "users" {
-#   name     = "app-01"
-#   instance = google_sql_database_instance.pg-01.name
-#   password = "change-me-now"
-# }
+resource "google_sql_user" "users" {
+  name     = "app-01"
+  instance = google_sql_database_instance.pg-01.name
+  password = "change-me-now"
+}
