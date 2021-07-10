@@ -5,7 +5,8 @@ provider "aws" {
 module "web" {
     source = "../modules/web"
 
-    ec2_instance_name = "web-testing"
-    ec2_ami = "ami-06fb5332e8e3e577a"
-    ec2_instance_type = "t2.micro"
+    ec2_instance_number = 1
+    ec2_instance_name   = "web-testing"
+    ec2_ami             = "ami-06fb5332e8e3e577a"
+    ec2_instance_type   = "t2.micro"
 }
