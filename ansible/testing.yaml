@@ -1,0 +1,17 @@
+---
+
+- hosts: web
+  tasks:
+  - name: Install nginx package
+    apt:
+      name: nginx
+      state: latest
+  - name: check nginx service status
+    service:
+      name: nginx
+      state: started
+
+- hosts: web
+  become: true
+  roles:
+    - {role: install-docker, tags: ['docker']}
