@@ -1,6 +1,9 @@
 ---
 
-- hosts: web
+- name: Install nginx
+  become: yes
+  become_user: root
+  hosts: web
   tasks:
   - name: Install nginx package
     apt:
