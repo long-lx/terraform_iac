@@ -42,6 +42,9 @@
         name: docker
         state: started
     
+    - name: reset ssh connection to allow ubuntu user in docker group
+      meta: reset_connection
+
     - name: build image
       command: docker build -t todo-list:v0.0.1 .
       args:
@@ -71,8 +74,8 @@
         chdir: ~/mycode/nodejs-todolist/
       tags: docker-compose-up
     
-    - name: docker-compose down services
-      command: docker-compose down
-      args:
-        chdir: ~/mycode/nodejs-todolist/
-      tags: docker-compose-down
+    # - name: docker-compose down services
+    #   command: docker-compose down
+    #   args:
+    #     chdir: ~/mycode/nodejs-todolist/
+    #   tags: docker-compose-down
