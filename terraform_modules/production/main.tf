@@ -5,8 +5,16 @@ provider "aws" {
 module "web" {
   source = "../modules/web"
 
-  ec2_instance_number = 2
-  ec2_instance_name   = "web-production"
-  ec2_ami             = "ami-06fb5332e8e3e577a"
-  ec2_instance_type   = "t2.medium"
+  ec2_instance_number = var.production_ec2_instance_number
+  ec2_instance_name   = var.production_ec2_instance_name
+  ec2_ami             = var.production_ec2_ami
+  ec2_instance_type   = var.production_ec2_instance_type
+}
+
+terraform {
+  backend "s3" {
+    bucket = "terraform-s3-state-techmaster-2021-devops-long"
+    key    = "production/terraform.tfstate"
+    region = "ap-southeast-1"
+  }
 }
